@@ -101,7 +101,7 @@ async function loadProjects() {
       .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
     if (items.length === 0) {
-      grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#64748b;padding:3rem">No projects yet — add some in the admin panel.</p>';
+      grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#64748b;padding:3rem">No projects yet.</p>';
       return;
     }
 
@@ -142,7 +142,7 @@ async function loadTestimonials() {
       .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
     if (items.length === 0) {
-      grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#64748b;padding:3rem">No testimonials yet — add some in the admin panel.</p>';
+      grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#64748b;padding:3rem">No testimonials yet.</p>';
       return;
     }
 
