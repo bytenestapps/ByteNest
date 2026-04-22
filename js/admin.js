@@ -84,12 +84,18 @@ document.getElementById('seedBtn').addEventListener('click', async () => {
     { name: 'Priya Nair',     role: 'Product Lead, LexiVault', avatar: 'PN', quote: "The level of attention to detail in both design and engineering is unmatched. ByteNest built us a compliance-ready platform that our legal clients trust completely. I can't recommend them enough.",       order: 2, published: true },
   ];
 
-  for (const p of projects)     await addDoc(collection(db, 'projects'),     p);
-  for (const t of testimonials) await addDoc(collection(db, 'testimonials'), t);
-
-  document.getElementById('seedBanner').style.display = 'none';
-  loadProjects();
-  loadTestimonials();
+  try {
+    for (const p of projects)     await addDoc(collection(db, 'projects'),     p);
+    for (const t of testimonials) await addDoc(collection(db, 'testimonials'), t);
+    document.getElementById('seedBanner').style.display = 'none';
+    loadProjects();
+    loadTestimonials();
+  } catch (err) {
+    console.error('Seed error:', err);
+    btn.disabled = false;
+    btn.textContent = 'Load Sample Data';
+    alert('Failed to save data: ' + err.message + '\n\nMake sure your Firestore security rules allow writes. See the Rules tab in Firebase Console.');
+  }
 });
 
 // ══════════════════════════════════════════════════════════════════════════
