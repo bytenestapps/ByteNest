@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ByteNest Technologies | Web & Mobile App Development</title>
+  <meta name="description" content="ByteNest Technologies Inc. is a professional software agency specializing in building high-quality web applications and mobile apps." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ─────────────────────────────────────────────────────────── -->
+  <header id="navbar">
+    <nav class="container nav-inner">
+      <a href="#" class="logo">
+        <span class="teal">ByteNest</span>Technologies
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="btn-primary btn-sm">Get in Touch</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <svg id="iconMenu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="iconClose" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ───────────────────────────────────────────────────────────── -->
+    <section id="hero">
+      <div class="hero-blob hero-blob-tr"></div>
+      <div class="hero-blob hero-blob-bl"></div>
+      <div class="container hero-content fade-in">
+        <span class="badge">Web &amp; Mobile App Development</span>
+        <h1>We Build Digital<br><span class="teal">Products That Matter</span></h1>
+        <p class="hero-sub">ByteNest Technologies Inc. crafts high-performance web applications and mobile apps that drive growth, delight users, and stand the test of time.</p>
+        <div class="hero-btns">
+          <a href="#portfolio" class="btn-primary">View Our Work &rarr;</a>
+          <a href="#contact" class="btn-outline">Get in Touch</a>
+        </div>
+      </div>
+      <a href="#services" class="scroll-cue">
+        <span>Scroll</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
+    </section>
+
+    <!-- ── Services ───────────────────────────────────────────────────────── -->
+    <section id="services" class="section bg-white">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">What We Do</span>
+          <h2>End-to-End Digital Solutions</h2>
+          <p>We cover every stage of the product lifecycle &mdash; from concept to launch and beyond.</p>
+        </div>
+        <div class="grid-2">
+
+          <div class="card fade-in">
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <h3>Web Application Development</h3>
+            <p>From SaaS platforms to enterprise dashboards, we build scalable, secure, and performant web apps using the latest technologies.</p>
+            <div class="tags"><span class="tag">React</span><span class="tag">Next.js</span><span class="tag">Node.js</span></div>
+          </div>
+
+          <div class="card fade-in">
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </div>
+            <h3>Mobile App Development</h3>
+            <p>Native-quality iOS and Android applications built with React Native &mdash; one codebase, two platforms, zero compromises.</p>
+            <div class="tags"><span class="tag">React Native</span><span class="tag">iOS</span><span class="tag">Android</span></div>
+          </div>
+
+          <div class="card fade-in">
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+            </div>
+            <h3>UI/UX Design</h3>
+            <p>Thoughtful, user-centered design that converts visitors into loyal customers. We craft every pixel with purpose.</p>
+            <div class="tags"><span class="tag">Figma</span><span class="tag">Prototyping</span><span class="tag">User Research</span></div>
+          </div>
+
+          <div class="card fade-in">
+            <div class="card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="2" x2="12" y2="6"/><path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </div>
+            <h3>Technical Consulting</h3>
+            <p>Need expert guidance on architecture, stack decisions, or scaling challenges? Our engineers provide clear, actionable advice.</p>
+            <div class="tags"><span class="tag">Architecture</span><span class="tag">Audits</span><span class="tag">Strategy</span></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Portfolio ──────────────────────────────────────────────────────── -->
+    <section id="portfolio" class="section bg-slate">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">Our Work</span>
+          <h2>Case Studies</h2>
+          <p>A selection of products we&rsquo;ve designed, built, and launched for clients around the world.</p>
+        </div>
+        <div class="grid-2" id="projectsGrid">
+          <p class="loading-msg" style="grid-column:1/-1;text-align:center;color:#64748b;padding:2rem">Loading projects&hellip;</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── About ──────────────────────────────────────────────────────────── -->
+    <section id="about" class="section bg-white">
+      <div class="container about-grid">
+
+        <div class="about-copy fade-in">
+          <span class="section-label">About Us</span>
+          <h2>Built by Engineers,<br>Driven by Purpose</h2>
+          <p>ByteNest Technologies Inc. was founded with a single mission: to help ambitious businesses bring their digital ideas to life with exceptional craftsmanship. Our team of senior engineers and designers has shipped products used by millions worldwide.</p>
+          <p>We believe great software starts with deep understanding &mdash; of your users, your business goals, and the technical challenges ahead. That&rsquo;s why we don&rsquo;t just build; we partner.</p>
+          <div class="stats">
+            <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Projects Delivered</span></div>
+            <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Client Satisfaction</span></div>
+            <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Years of Expertise</span></div>
+          </div>
+        </div>
+
+        <div class="values">
+          <div class="value-card fade-in">
+            <div class="value-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Outcome-Driven</h4>
+              <p>We measure success by the impact our software has on your business &mdash; not just by lines of code shipped.</p>
+            </div>
+          </div>
+          <div class="value-card fade-in">
+            <div class="value-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div>
+              <h4>Speed Without Compromise</h4>
+              <p>We move fast and iterate often, delivering value early while never cutting corners on quality or security.</p>
+            </div>
+          </div>
+          <div class="value-card fade-in">
+            <div class="value-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h4>Transparent Partnership</h4>
+              <p>You&rsquo;re involved every step of the way &mdash; clear communication, honest timelines, and no surprises.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Testimonials ───────────────────────────────────────────────────── -->
+    <section id="testimonials" class="section bg-slate">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">Client Stories</span>
+          <h2>What Our Clients Say</h2>
+        </div>
+        <div class="grid-3" id="testimonialsGrid">
+          <p class="loading-msg" style="grid-column:1/-1;text-align:center;color:#64748b;padding:2rem">Loading testimonials&hellip;</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Contact ────────────────────────────────────────────────────────── -->
+    <section id="contact" class="section bg-white">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-label">Get in Touch</span>
+          <h2>Let&rsquo;s Build Something Great</h2>
+          <p>Have a project in mind? Send us a message and we&rsquo;ll get back to you within 24 hours.</p>
+        </div>
+        <div class="contact-grid">
+
+          <div class="contact-info fade-in">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <strong>Email Us</strong>
+                <a href="mailto:info@bytenest.app" style="color: inherit;text-decoration: none;">
+                  info@bytenest.app
+                </a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <strong>Our Location</strong>
+                <span>Available Worldwide, Remote-First</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <strong>Response Time</strong>
+                <span>Within 24 hours</span>
+              </div>
+            </div>
+            <div class="cta-box">
+              <h3>Ready to start?</h3>
+              <p>Whether you have a fully scoped project or just an idea, reach out. Our first consultation is always free.</p>
+            </div>
+          </div>
+
+          <form id="contactForm" class="contact-form fade-in" action="https://formspree.io/f/xvzdvgva" method="POST">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required placeholder="Jane Smith" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="jane@company.com" />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Tell us about your project..."></textarea>
+            </div>
+            <div id="formStatus"></div>
+            <button type="submit" class="btn-primary btn-full" id="submitBtn">
+              Send Message &rarr;
+            </button>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo"><span class="teal">ByteNest</span>Technologies</a>
+        <p>Building world-class web and mobile applications for ambitious companies around the globe.</p>
+        <div class="social-links">
+          <a href="#" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.604-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" aria-label="X (Twitter)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Web Development</a></li>
+          <li><a href="#services">Mobile Apps</a></li>
+          <li><a href="#services">UI/UX Design</a></li>
+          <li><a href="#services">Consulting</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; <span id="year"></span> ByteNest Technologies Inc. All rights reserved.</p>
+        <p>Crafted with care in every pixel.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>

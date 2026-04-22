@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ByteNest Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #f1f5f9; color: #0f172a; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; }
+
+    /* ── Login ── */
+    #loginScreen {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #f8fafc, #f0fdfa);
+    }
+    .login-box {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 1.25rem;
+      padding: 2.5rem;
+      width: 100%; max-width: 380px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.06);
+    }
+    .login-box h1 { font-size: 1.5rem; font-weight: 800; margin-bottom: .25rem; }
+    .login-box h1 span { color: #0d9488; }
+    .login-box p  { color: #64748b; font-size: .9rem; margin-bottom: 1.75rem; }
+
+    /* ── Dashboard ── */
+    #dashboard { display: none; }
+    #adminHeader {
+      background: #0f172a;
+      color: #fff;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 3.5rem;
+      position: sticky; top: 0; z-index: 50;
+    }
+    #adminHeader .brand span { color: #2dd4bf; font-weight: 800; font-size: 1.05rem; }
+    #adminHeader .brand b   { font-weight: 800; font-size: 1.05rem; }
+    #logoutBtn {
+      background: none; border: 1px solid #334155; color: #94a3b8;
+      border-radius: 9999px; padding: .35rem 1rem; font-size: .8rem;
+      cursor: pointer; transition: border-color .2s, color .2s;
+    }
+    #logoutBtn:hover { border-color: #2dd4bf; color: #2dd4bf; }
+
+    .admin-body { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* ── Tabs ── */
+    .tabs { display: flex; gap: .5rem; margin-bottom: 2rem; }
+    .tab-btn {
+      padding: .5rem 1.5rem; border-radius: 9999px; font-size: .875rem; font-weight: 600;
+      border: 2px solid #e2e8f0; background: #fff; cursor: pointer;
+      color: #64748b; transition: all .2s;
+    }
+    .tab-btn.active { background: #0d9488; border-color: #0d9488; color: #fff; }
+
+    /* ── Section cards ── */
+    .panel-card {
+      background: #fff; border: 1px solid #e2e8f0; border-radius: 1rem;
+      padding: 1.75rem; margin-bottom: 1.5rem;
+    }
+    .panel-card h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 1.25rem; color: #0f172a; }
+
+    /* ── Seed banner ── */
+    .seed-banner {
+      background: #f0fdfa; border: 1px solid #99f6e4; border-radius: .875rem;
+      padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;
+    }
+    .seed-banner p { font-size: .875rem; color: #0f766e; }
+
+    /* ── Table ── */
+    .data-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+    .data-table th { text-align: left; padding: .6rem 1rem; background: #f8fafc; color: #64748b; font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+    .data-table td { padding: .75rem 1rem; border-top: 1px solid #f1f5f9; vertical-align: middle; }
+    .data-table tr:hover td { background: #f8fafc; }
+    .data-table td:last-child { text-align: right; white-space: nowrap; }
+
+    .badge-pub   { display: inline-flex; padding: .2rem .65rem; border-radius: 9999px; font-size: .75rem; font-weight: 600; background: #dcfce7; color: #15803d; }
+    .badge-draft { display: inline-flex; padding: .2rem .65rem; border-radius: 9999px; font-size: .75rem; font-weight: 600; background: #f1f5f9; color: #64748b; }
+
+    /* ── Buttons ── */
+    .btn { display: inline-flex; align-items: center; gap: .3rem; border: none; border-radius: 9999px; padding: .4rem 1rem; font-size: .8rem; font-weight: 600; cursor: pointer; transition: opacity .2s; }
+    .btn:hover { opacity: .85; }
+    .btn-teal  { background: #0d9488; color: #fff; }
+    .btn-ghost { background: #f1f5f9; color: #334155; }
+    .btn-red   { background: #fee2e2; color: #b91c1c; }
+    .btn-full  { width: 100%; justify-content: center; padding: .75rem 1rem; font-size: .9rem; border-radius: .75rem; }
+    .btn-sm    { padding: .3rem .75rem; font-size: .75rem; }
+
+    /* ── Form ── */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-grid .full { grid-column: 1 / -1; }
+    .field { display: flex; flex-direction: column; gap: .35rem; }
+    .field label { font-size: .8rem; font-weight: 600; color: #475569; }
+    .field input, .field textarea, .field select {
+      padding: .625rem .875rem; border-radius: .625rem; border: 1px solid #e2e8f0;
+      font-family: inherit; font-size: .875rem; color: #0f172a; outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .field input:focus, .field textarea:focus, .field select:focus {
+      border-color: #0d9488; box-shadow: 0 0 0 3px rgba(13,148,136,.1);
+    }
+    .field textarea { resize: vertical; min-height: 80px; }
+    .checkbox-row { display: flex; align-items: center; gap: .5rem; font-size: .875rem; font-weight: 500; cursor: pointer; }
+    .checkbox-row input { width: 1rem; height: 1rem; accent-color: #0d9488; cursor: pointer; }
+
+    .form-msg { font-size: .8rem; padding: .625rem .875rem; border-radius: .625rem; display: none; }
+    .form-msg.ok  { display: block; background: #f0fdfa; border: 1px solid #99f6e4; color: #0f766e; }
+    .form-msg.err { display: block; background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; }
+
+    .divider { border: none; border-top: 1px solid #f1f5f9; margin: 1.5rem 0; }
+    .edit-title { font-size: .9rem; font-weight: 700; color: #0d9488; margin-bottom: 1rem; }
+
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .admin-body { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Login ──────────────────────────────────────────────────────────── -->
+  <div id="loginScreen">
+    <div class="login-box">
+      <h1><span>ByteNest</span> Admin</h1>
+      <p>Sign in to manage your website content</p>
+      <form id="loginForm" style="display:flex;flex-direction:column;gap:1rem">
+        <div class="field">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" required placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" required placeholder="••••••••" />
+        </div>
+        <div id="loginError" class="form-msg"></div>
+        <button type="submit" class="btn btn-teal btn-full" id="loginBtn">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── Dashboard ──────────────────────────────────────────────────────── -->
+  <div id="dashboard">
+    <header id="adminHeader">
+      <div class="brand"><span>ByteNest</span><b> Admin</b></div>
+      <div style="display:flex;gap:.75rem;align-items:center">
+        <a href="index.html" target="_blank" style="font-size:.8rem;color:#64748b;">View Site ↗</a>
+        <button id="logoutBtn">Sign Out</button>
+      </div>
+    </header>
+
+    <div class="admin-body">
+
+      <!-- Seed banner (hidden after first use) -->
+      <div class="seed-banner" id="seedBanner">
+        <p>🌱 <strong>First time?</strong> Load sample projects and testimonials to get started.</p>
+        <button class="btn btn-teal btn-sm" id="seedBtn">Load Sample Data</button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="projects">Projects</button>
+        <button class="tab-btn" data-tab="testimonials">Testimonials</button>
+      </div>
+
+      <!-- ── Projects tab ─────────────────────────────────────────────── -->
+      <div id="tab-projects">
+        <div class="panel-card">
+          <h2>All Projects</h2>
+          <div id="projectsList"><p style="color:#64748b;font-size:.875rem">Loading&hellip;</p></div>
+        </div>
+
+        <div class="panel-card">
+          <div class="edit-title" id="projectFormTitle">Add New Project</div>
+          <form id="projectForm" class="form-grid">
+            <input type="hidden" id="projectId" />
+            <div class="field">
+              <label>Title *</label>
+              <input type="text" id="pTitle" required placeholder="Meridian CRM" />
+            </div>
+            <div class="field">
+              <label>Category *</label>
+              <select id="pCategory" required>
+                <option value="">Select…</option>
+                <option>Web Application</option>
+                <option>Mobile App</option>
+                <option>Design</option>
+                <option>Consulting</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label>Description *</label>
+              <textarea id="pDescription" required placeholder="Brief description…"></textarea>
+            </div>
+            <div class="field full">
+              <label>Tags <span style="font-weight:400;color:#94a3b8">(comma-separated)</span></label>
+              <input type="text" id="pTags" placeholder="Next.js, TypeScript, AWS" />
+            </div>
+            <div class="field full">
+              <label>Image URL *</label>
+              <input type="text" id="pImageUrl" required placeholder="https://…" />
+            </div>
+            <div class="field">
+              <label>Link URL</label>
+              <input type="text" id="pHref" placeholder="#" />
+            </div>
+            <div class="field">
+              <label>Display Order</label>
+              <input type="number" id="pOrder" value="0" min="0" />
+            </div>
+            <div class="field full">
+              <label class="checkbox-row">
+                <input type="checkbox" id="pPublished" checked />
+                Published (visible on site)
+              </label>
+            </div>
+            <div id="projectMsg" class="form-msg full"></div>
+            <div class="full" style="display:flex;gap:.75rem;flex-wrap:wrap">
+              <button type="submit" class="btn btn-teal" id="projectSubmitBtn">Add Project</button>
+              <button type="button" class="btn btn-ghost" id="projectCancelBtn" style="display:none">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ── Testimonials tab ─────────────────────────────────────────── -->
+      <div id="tab-testimonials" style="display:none">
+        <div class="panel-card">
+          <h2>All Testimonials</h2>
+          <div id="testimonialsList"><p style="color:#64748b;font-size:.875rem">Loading&hellip;</p></div>
+        </div>
+
+        <div class="panel-card">
+          <div class="edit-title" id="testimonialFormTitle">Add New Testimonial</div>
+          <form id="testimonialForm" class="form-grid">
+            <input type="hidden" id="testimonialId" />
+            <div class="field">
+              <label>Full Name *</label>
+              <input type="text" id="tName" required placeholder="Sarah Chen" />
+            </div>
+            <div class="field">
+              <label>Role / Company *</label>
+              <input type="text" id="tRole" required placeholder="CTO, Meridian Group" />
+            </div>
+            <div class="field">
+              <label>Initials <span style="font-weight:400;color:#94a3b8">(shown as avatar)</span></label>
+              <input type="text" id="tAvatar" maxlength="2" placeholder="SC" style="text-transform:uppercase" />
+            </div>
+            <div class="field">
+              <label>Display Order</label>
+              <input type="number" id="tOrder" value="0" min="0" />
+            </div>
+            <div class="field full">
+              <label>Quote *</label>
+              <textarea id="tQuote" required placeholder="What the client said…" style="min-height:100px"></textarea>
+            </div>
+            <div class="field full">
+              <label class="checkbox-row">
+                <input type="checkbox" id="tPublished" checked />
+                Published (visible on site)
+              </label>
+            </div>
+            <div id="testimonialMsg" class="form-msg full"></div>
+            <div class="full" style="display:flex;gap:.75rem;flex-wrap:wrap">
+              <button type="submit" class="btn btn-teal" id="testimonialSubmitBtn">Add Testimonial</button>
+              <button type="button" class="btn btn-ghost" id="testimonialCancelBtn" style="display:none">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div><!-- /admin-body -->
+  </div><!-- /dashboard -->
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
